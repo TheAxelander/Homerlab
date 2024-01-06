@@ -1,0 +1,22 @@
+version: "3"
+
+networks:
+  proxy:
+    external: true
+
+services:
+  homerless:
+    build:
+      context: .
+      dockerfile: Homerlab/Dockerfile
+    container_name: homerlab
+#    ports:
+#      - 8888:80
+    restart: always
+    volumes:
+      - data:/config
+    networks:
+      - proxy
+
+volumes:
+  data:
